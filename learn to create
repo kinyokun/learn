@@ -1,0 +1,35 @@
+#include<stdio.h>
+main()
+{
+	char m;
+	int n,i=1;
+	double sum=0,m0=0,m1=0,m2;
+	printf("欢迎来到货物质量单位统一换算系统。1千克=1000克，1镑=16盎司，1镑=454克。\n请输入货物的质量数(正整数、小数皆可，输出结果保留三位小数)。\n");
+	while(scanf("%d",&n))
+	{
+		printf("请输入货物的质量单位（g，G-克，k，K-千克，o，O-盎司，p，P-镑），输入x程序退出。\n");
+		scanf("%s",&m);
+		switch(m)
+		{
+			case 'g':m1=n;i++;break;
+			case 'k':m1=1000*n;i++;break;
+			case 'o':m1=n*454/16;i++;break;
+			case 'p':m1=n*454;i++;break;
+			case 'x':printf("最重货物的质量是%.3f克\n",m0);
+			         printf("最轻货物的质量是%.3f克\n",m2);
+			         printf("货物的全部总质量是%.3f克\n",sum);
+			         printf("货物的平均质量是%.3f克\n",sum/(i-1));
+			         return 0;
+			default:printf("请输入合法内容！！！\n");break;
+		}
+		printf("第%d个货物的质量是%.3f克\n请输入货物的质量数。\n",i-1,m1);
+		if(m0<=m1)
+		{
+		m2=m0;
+		m0=m1;
+		}
+		if(m2>=m1)
+		m2=m1;
+		sum=sum+m1;
+    }
+}
